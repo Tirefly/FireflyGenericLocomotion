@@ -3,14 +3,22 @@
 
 #include "FireflyGenericLocomotionAnimInstance.h"
 
+#include "GameFramework/Character.h"
 
-UFireflyGenericLocomotionAnimInstance::UFireflyGenericLocomotionAnimInstance()
-{
-}
 
 void UFireflyGenericLocomotionAnimInstance::NativeBeginPlay()
 {
 	Super::NativeBeginPlay();
+
+	if (IsValid(GetOwningActor()))
+	{
+		Character = Cast<ACharacter>(GetOwningActor());
+
+		if (CharacterMovement == nullptr && Character != nullptr)
+		{
+			CharacterMovement = Character->GetCharacterMovement();
+		}
+	}
 }
 
 void UFireflyGenericLocomotionAnimInstance::NativeUpdateAnimation(float DeltaTime)

@@ -15,7 +15,7 @@ class FIREFLYGENERICLOCOMOTION_API UFireflyGenericLocomotionAnimInstance : publi
 #pragma region AnimInstance
 
 public:
-	UFireflyGenericLocomotionAnimInstance();
+	UFireflyGenericLocomotionAnimInstance() {}
 
 	virtual void NativeBeginPlay() override;
 
@@ -29,6 +29,17 @@ public:
 
 
 #pragma region LocomotionData
+
+#pragma region Reference
+
+protected:
+	UPROPERTY(BlueprintReadOnly, Category = "Locomotion|Reference")
+	ACharacter* Character;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Locomotion|Reference")
+	class UCharacterMovementComponent* CharacterMovement;
+
+#pragma endregion
 
 #pragma region Location
 
